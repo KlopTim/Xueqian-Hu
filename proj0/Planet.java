@@ -66,7 +66,7 @@ public class Planet {
 		return total_forceY;
 	}
 
-	public boolean equals(Planet p) {
+	private boolean equals(Planet p) {
 		if (this == p) {
 			return true;
 		}
