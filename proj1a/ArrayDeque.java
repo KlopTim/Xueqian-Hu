@@ -62,7 +62,7 @@ public class ArrayDeque<T> {
         System.out.println("");
     }
 
-    public void delResize() {
+    private void delResize() {
         int reLen = items.length / 2;
         T[] newItems = (T[]) new Object[reLen];
         int i = begin;
@@ -76,9 +76,11 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (items.length >= 16 && 4 * (size -1) / items.length < 1) {
+        if (isEmpty()) {
+            return null;
+        }
+        if (items.length >= 16 && 4 * (size - 1) / items.length < 1) {
             delResize();
-
         }
         T removeNum = items[begin];
         begin = (begin + 1) % items.length;
@@ -87,6 +89,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         if (items.length >= 16 && 4 * (size - 1) / items.length < 1) {
             delResize();
         }

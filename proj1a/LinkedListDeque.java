@@ -58,6 +58,9 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
         T first = sentinal.next.item;
         sentinal.next = sentinal.next.next;
         sentinal.next.prev = sentinal;
@@ -66,8 +69,11 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         T last = sentinal.prev.item;
-        sentinal.prev= sentinal.prev.prev;
+        sentinal.prev = sentinal.prev.prev;
         sentinal.prev.next = sentinal;
         size -= 1;
         return last;
